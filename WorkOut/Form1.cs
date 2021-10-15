@@ -49,7 +49,7 @@ namespace WorkOut
 
         private void MnuSohp_Click(object sender, EventArgs e)
         {
-            string sets = mylib.GetInput("Set : ");
+            int sets = 0;
             int set = 0 ;
             int[] weight = new int[512];
             int[] rep = new int[512];
@@ -57,7 +57,7 @@ namespace WorkOut
             int[] volume = new int[512];
             int[] Volume = new int[512];
 
-            Form3 f3 = new Form3(int.Parse(sets));
+            Form3 f3 = new Form3(sets);
             if (f3.ShowDialog() == DialogResult.OK)
             {
                 set = int.Parse(f3.textBox1.Text);
