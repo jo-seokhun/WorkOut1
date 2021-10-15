@@ -298,7 +298,7 @@ namespace WorkOut
             {
                 if (i == 0)
                 {
-                    textBox1.Text += $"OHP,WEIGHT,REPS,Total Reps,Volume\r\n";
+                    textBox1.Text += $"OHP,WEIGHT,REPS,Total Reps,Volume\r\n ";
 
                 }
                 if (i == 0) trep[0] = rep[0];
