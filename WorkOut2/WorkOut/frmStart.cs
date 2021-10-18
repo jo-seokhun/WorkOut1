@@ -262,9 +262,69 @@ namespace WorkOut
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+            dbGrid.Rows.Clear();
+            //dbGrid.Columns.Clear();
+
             string day = dateTimePicker1.Value.ToString("yyyy.MM.dd");
-            
-            
+
+            Encoding ec =  Encoding.UTF8 ;
+            StreamReader sr = new StreamReader(address, ec, true);
+
+            //string str = "";
+            //string[] sarr = str.Split(',');
+            //for (int i = 0; i < sarr.Length; i++)
+            //{
+            //    dbGrid.Columns.Add(sarr[i], sarr[i]);
+            //}
+
+            while (true)
+            {
+                string str = sr.ReadLine();
+                if (str == null) break;
+                string[] sarr = str.Split(',');
+
+                
+                for (int i = 0; i < sarr.Length; i++)
+                {
+                    if (sarr[i]==day)
+                    {
+                        int indx = dbGrid.Rows.Add();
+                        for (int j=0;j<sarr.Length;j++)
+                        {
+                            dbGrid.Rows[indx].Cells[j].Value = sarr[j];
+                        }
+                    }
+                    
+                }
+            }
+            sr.Close();
+            //if(str==null)
+            //{
+            //    Encoding enc;
+            //    enc = Encoding.UTF8;
+
+            //    byte[] barrOrg = File.ReadAllBytes(address);
+            //    byte[] barr = Encoding.Convert(enc, Encoding.Default, barrOrg);
+            //    str = Encoding.Default.GetString(barr);
+
+            //    sarr = str.Split('\n');                //줄 별로 array만듬
+            //    string[] sa1 = sarr[0].Trim().Split(',');       //줄 안에서 ,단위로 나눔
+
+            //    //for (int i = 0; i < sa1.Length; i++)
+            //    //{
+            //    //    dbGrid.Columns.Add(sa1[i], sa1[i]);
+            //    //}
+            //    for (int j = 1; j < sarr.Length; j++)
+            //    {
+            //        sa1 = sarr[j].Trim().Split(',');
+            //        dbGrid.Rows.Add(sa1);
+            //    }
+
+            //}
+
+
+
+
 
         }
 
