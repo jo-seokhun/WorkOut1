@@ -1,0 +1,7 @@
+C:\Users\조석훈\source\repos\C#\myLibrary\myLibrary\bin\Debug\myLibrary.dll
+C:\Users\조석훈\source\repos\C#\myLibrary\myLibrary\bin\Debug\myLibrary.pdb
+C:\Users\조석훈\source\repos\C#\myLibrary\myLibrary\obj\Debug\myLibrary.csproj.GenerateResource.cache
+C:\Users\조석훈\source\repos\C#\myLibrary\myLibrary\obj\Debug\myLibrary.dll
+C:\Users\조석훈\source\repos\C#\myLibrary\myLibrary\obj\Debug\myLibrary.pdb
+C:\Users\조석훈\source\repos\C#\myLibrary\myLibrary\obj\Debug\myLibrary.frminput.resources
+C:\Users\조석훈\source\repos\C#\myLibrary\myLibrary\obj\Debug\myLibrary.csprojAssemblyReference.cache
