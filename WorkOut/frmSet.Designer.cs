@@ -1,6 +1,6 @@
 ﻿namespace WorkOut
 {
-    partial class Form3
+    partial class frmSet
     {
         /// <summary>
         /// Required designer variable.

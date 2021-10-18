@@ -12,11 +12,11 @@ namespace WorkOut
 {
  
 
-    public partial class Form3 : Form
+    public partial class frmSet : Form
     {
         int worksize;
 
-        public Form3(int size = 10)
+        public frmSet(int size = 10)
         {
             InitializeComponent();
             worksize = size;

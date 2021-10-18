@@ -1,6 +1,6 @@
 ﻿namespace WorkOut
 {
-    partial class Form2
+    partial class frmInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -34,12 +34,15 @@
             this.TbBox1 = new System.Windows.Forms.TextBox();
             this.TbBox2 = new System.Windows.Forms.TextBox();
             this.btninput = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbBoxDate = new System.Windows.Forms.TextBox();
+            this.tbBoxDoW = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 67);
+            this.label2.Location = new System.Drawing.Point(111, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 15);
             this.label2.TabIndex = 1;
@@ -48,7 +51,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(80, 115);
+            this.label3.Location = new System.Drawing.Point(127, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 15);
             this.label3.TabIndex = 2;
@@ -58,7 +61,7 @@
             // btnoutput
             // 
             this.btnoutput.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnoutput.Location = new System.Drawing.Point(201, 165);
+            this.btnoutput.Location = new System.Drawing.Point(238, 167);
             this.btnoutput.Name = "btnoutput";
             this.btnoutput.Size = new System.Drawing.Size(105, 35);
             this.btnoutput.TabIndex = 6;
@@ -68,7 +71,7 @@
             // 
             // TbBox1
             // 
-            this.TbBox1.Location = new System.Drawing.Point(147, 64);
+            this.TbBox1.Location = new System.Drawing.Point(194, 64);
             this.TbBox1.Name = "TbBox1";
             this.TbBox1.Size = new System.Drawing.Size(93, 25);
             this.TbBox1.TabIndex = 7;
@@ -76,7 +79,7 @@
             // 
             // TbBox2
             // 
-            this.TbBox2.Location = new System.Drawing.Point(147, 112);
+            this.TbBox2.Location = new System.Drawing.Point(194, 112);
             this.TbBox2.Name = "TbBox2";
             this.TbBox2.Size = new System.Drawing.Size(93, 25);
             this.TbBox2.TabIndex = 8;
@@ -84,7 +87,7 @@
             // 
             // btninput
             // 
-            this.btninput.Location = new System.Drawing.Point(67, 167);
+            this.btninput.Location = new System.Drawing.Point(46, 169);
             this.btninput.Name = "btninput";
             this.btninput.Size = new System.Drawing.Size(108, 30);
             this.btninput.TabIndex = 9;
@@ -92,11 +95,37 @@
             this.btninput.UseVisualStyleBackColor = true;
             this.btninput.Click += new System.EventHandler(this.btninput_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(27, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 15);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Date :";
+            // 
+            // tbBoxDate
+            // 
+            this.tbBoxDate.Location = new System.Drawing.Point(80, 10);
+            this.tbBoxDate.Name = "tbBoxDate";
+            this.tbBoxDate.Size = new System.Drawing.Size(123, 25);
+            this.tbBoxDate.TabIndex = 13;
+            // 
+            // tbBoxDoW
+            // 
+            this.tbBoxDoW.Location = new System.Drawing.Point(220, 10);
+            this.tbBoxDoW.Name = "tbBoxDoW";
+            this.tbBoxDoW.Size = new System.Drawing.Size(67, 25);
+            this.tbBoxDoW.TabIndex = 14;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 205);
+            this.ClientSize = new System.Drawing.Size(391, 205);
+            this.Controls.Add(this.tbBoxDoW);
+            this.Controls.Add(this.tbBoxDate);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btninput);
             this.Controls.Add(this.TbBox2);
             this.Controls.Add(this.TbBox1);
@@ -117,5 +146,8 @@
         private System.Windows.Forms.Button btninput;
         public System.Windows.Forms.TextBox TbBox1;
         public System.Windows.Forms.TextBox TbBox2;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox tbBoxDate;
+        public System.Windows.Forms.TextBox tbBoxDoW;
     }
 }

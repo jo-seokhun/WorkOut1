@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.shoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shoulderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,26 +59,13 @@
             this.MnuArmpulldown = new System.Windows.Forms.ToolStripMenuItem();
             this.tricepsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MnuCablepushdown = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TbSet = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.TbWeight = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.TbReps = new System.Windows.Forms.TextBox();
-            this.btnOk = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(-1, 27);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(963, 225);
-            this.textBox1.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -89,7 +75,7 @@
             this.chestBackToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(963, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(745, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -111,34 +97,34 @@
             this.MnuRearDelt,
             this.MnuOhp});
             this.shoulderToolStripMenuItem.Name = "shoulderToolStripMenuItem";
-            this.shoulderToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.shoulderToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.shoulderToolStripMenuItem.Text = "Shoulder";
             // 
             // MnuSohp
             // 
             this.MnuSohp.Name = "MnuSohp";
-            this.MnuSohp.Size = new System.Drawing.Size(224, 26);
+            this.MnuSohp.Size = new System.Drawing.Size(155, 26);
             this.MnuSohp.Text = "S_Ohp";
             this.MnuSohp.Click += new System.EventHandler(this.MnuSohp_Click);
             // 
             // MnuSarere
             // 
             this.MnuSarere.Name = "MnuSarere";
-            this.MnuSarere.Size = new System.Drawing.Size(224, 26);
+            this.MnuSarere.Size = new System.Drawing.Size(155, 26);
             this.MnuSarere.Text = "Sarere";
             this.MnuSarere.Click += new System.EventHandler(this.MnuSarere_Click);
             // 
             // MnuRearDelt
             // 
             this.MnuRearDelt.Name = "MnuRearDelt";
-            this.MnuRearDelt.Size = new System.Drawing.Size(224, 26);
+            this.MnuRearDelt.Size = new System.Drawing.Size(155, 26);
             this.MnuRearDelt.Text = "Rear Delt";
             this.MnuRearDelt.Click += new System.EventHandler(this.MnuRearDelt_Click);
             // 
             // MnuOhp
             // 
             this.MnuOhp.Name = "MnuOhp";
-            this.MnuOhp.Size = new System.Drawing.Size(224, 26);
+            this.MnuOhp.Size = new System.Drawing.Size(155, 26);
             this.MnuOhp.Text = "Ohp";
             this.MnuOhp.Click += new System.EventHandler(this.MnuOhp_Click);
             // 
@@ -149,27 +135,27 @@
             this.MnuLegExtention,
             this.MnuLegCurl});
             this.legsToolStripMenuItem.Name = "legsToolStripMenuItem";
-            this.legsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.legsToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.legsToolStripMenuItem.Text = "Legs";
             // 
             // MnuSquat
             // 
             this.MnuSquat.Name = "MnuSquat";
-            this.MnuSquat.Size = new System.Drawing.Size(224, 26);
+            this.MnuSquat.Size = new System.Drawing.Size(185, 26);
             this.MnuSquat.Text = "Squat";
             this.MnuSquat.Click += new System.EventHandler(this.MnuSquat_Click);
             // 
             // MnuLegExtention
             // 
             this.MnuLegExtention.Name = "MnuLegExtention";
-            this.MnuLegExtention.Size = new System.Drawing.Size(224, 26);
+            this.MnuLegExtention.Size = new System.Drawing.Size(185, 26);
             this.MnuLegExtention.Text = "Leg Extention";
             this.MnuLegExtention.Click += new System.EventHandler(this.MnuLegExtention_Click);
             // 
             // MnuLegCurl
             // 
             this.MnuLegCurl.Name = "MnuLegCurl";
-            this.MnuLegCurl.Size = new System.Drawing.Size(224, 26);
+            this.MnuLegCurl.Size = new System.Drawing.Size(185, 26);
             this.MnuLegCurl.Text = "Leg Curl";
             this.MnuLegCurl.Click += new System.EventHandler(this.MnuLegCurl_Click);
             // 
@@ -179,21 +165,21 @@
             this.dumbelCurlToolStripMenuItem,
             this.barbelCurlToolStripMenuItem});
             this.bicepsToolStripMenuItem.Name = "bicepsToolStripMenuItem";
-            this.bicepsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.bicepsToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.bicepsToolStripMenuItem.Text = "Biceps";
             this.bicepsToolStripMenuItem.Click += new System.EventHandler(this.bicepsToolStripMenuItem_Click);
             // 
             // dumbelCurlToolStripMenuItem
             // 
             this.dumbelCurlToolStripMenuItem.Name = "dumbelCurlToolStripMenuItem";
-            this.dumbelCurlToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.dumbelCurlToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.dumbelCurlToolStripMenuItem.Text = "Dumbel Curl";
             this.dumbelCurlToolStripMenuItem.Click += new System.EventHandler(this.dumbelCurlToolStripMenuItem_Click);
             // 
             // barbelCurlToolStripMenuItem
             // 
             this.barbelCurlToolStripMenuItem.Name = "barbelCurlToolStripMenuItem";
-            this.barbelCurlToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.barbelCurlToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.barbelCurlToolStripMenuItem.Text = "Barbel Curl";
             this.barbelCurlToolStripMenuItem.Click += new System.EventHandler(this.barbelCurlToolStripMenuItem_Click);
             // 
@@ -319,77 +305,39 @@
             this.MnuCablepushdown.Size = new System.Drawing.Size(214, 26);
             this.MnuCablepushdown.Text = "Cable Push Down";
             // 
-            // label1
+            // splitContainer1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(125, 311);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 15);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "SET : ";
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // TbSet
+            // splitContainer1.Panel1
             // 
-            this.TbSet.Location = new System.Drawing.Point(180, 308);
-            this.TbSet.Name = "TbSet";
-            this.TbSet.Size = new System.Drawing.Size(57, 25);
-            this.TbSet.TabIndex = 4;
+            this.splitContainer1.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer1.Size = new System.Drawing.Size(745, 582);
+            this.splitContainer1.SplitterDistance = 266;
+            this.splitContainer1.SplitterWidth = 10;
+            this.splitContainer1.TabIndex = 3;
             // 
-            // label2
+            // textBox1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(97, 382);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 15);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "WEIGHT : ";
-            // 
-            // TbWeight
-            // 
-            this.TbWeight.Location = new System.Drawing.Point(180, 379);
-            this.TbWeight.Name = "TbWeight";
-            this.TbWeight.Size = new System.Drawing.Size(57, 25);
-            this.TbWeight.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(113, 450);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 15);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "REPS : ";
-            // 
-            // TbReps
-            // 
-            this.TbReps.Location = new System.Drawing.Point(180, 447);
-            this.TbReps.Name = "TbReps";
-            this.TbReps.Size = new System.Drawing.Size(57, 25);
-            this.TbReps.TabIndex = 8;
-            // 
-            // btnOk
-            // 
-            this.btnOk.Location = new System.Drawing.Point(110, 512);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(126, 47);
-            this.btnOk.TabIndex = 9;
-            this.btnOk.Text = "Ok";
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(739, 260);
+            this.textBox1.TabIndex = 1;
             // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 610);
-            this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.TbReps);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.TbWeight);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.TbSet);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(745, 610);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "form1";
@@ -398,14 +346,16 @@
             this.Load += new System.EventHandler(this.form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem shoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shoulderToolStripMenuItem;
@@ -437,13 +387,8 @@
         private System.Windows.Forms.ToolStripMenuItem MnuArmpulldown;
         private System.Windows.Forms.ToolStripMenuItem tricepsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MnuCablepushdown;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TbSet;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TbWeight;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TbReps;
-        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
