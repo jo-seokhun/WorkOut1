@@ -98,7 +98,7 @@
             this.MnuClientIndex});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1389, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1011, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -225,7 +225,7 @@
             this.MnuDips,
             this.MnuFly});
             this.chestToolStripMenuItem.Name = "chestToolStripMenuItem";
-            this.chestToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.chestToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.chestToolStripMenuItem.Text = "Chest";
             // 
             // MnuBenchpress
@@ -274,7 +274,7 @@
             this.MnuBarbelrow,
             this.MnuArmpulldown});
             this.backToolStripMenuItem.Name = "backToolStripMenuItem";
-            this.backToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.backToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.backToolStripMenuItem.Text = "Back";
             // 
             // MnuPullUp
@@ -331,7 +331,7 @@
             this.tricepsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnuCablepushdown});
             this.tricepsToolStripMenuItem.Name = "tricepsToolStripMenuItem";
-            this.tricepsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.tricepsToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
             this.tricepsToolStripMenuItem.Text = "Triceps";
             // 
             // MnuCablepushdown
@@ -352,11 +352,9 @@
             this.MnuClientIndex.Name = "MnuClientIndex";
             this.MnuClientIndex.Size = new System.Drawing.Size(105, 24);
             this.MnuClientIndex.Text = "Client Index";
-            this.MnuClientIndex.Visible = false;
             // 
             // Mnu1
             // 
-            this.Mnu1.CheckOnClick = true;
             this.Mnu1.Name = "Mnu1";
             this.Mnu1.Size = new System.Drawing.Size(224, 26);
             this.Mnu1.Text = "1";
@@ -364,7 +362,6 @@
             // 
             // Mnu2
             // 
-            this.Mnu2.CheckOnClick = true;
             this.Mnu2.Name = "Mnu2";
             this.Mnu2.Size = new System.Drawing.Size(224, 26);
             this.Mnu2.Text = "2";
@@ -372,7 +369,6 @@
             // 
             // Mnu3
             // 
-            this.Mnu3.CheckOnClick = true;
             this.Mnu3.Name = "Mnu3";
             this.Mnu3.Size = new System.Drawing.Size(224, 26);
             this.Mnu3.Text = "3";
@@ -380,7 +376,6 @@
             // 
             // Mnu4
             // 
-            this.Mnu4.CheckOnClick = true;
             this.Mnu4.Name = "Mnu4";
             this.Mnu4.Size = new System.Drawing.Size(224, 26);
             this.Mnu4.Text = "4";
@@ -388,7 +383,6 @@
             // 
             // Mnu5
             // 
-            this.Mnu5.CheckOnClick = true;
             this.Mnu5.Name = "Mnu5";
             this.Mnu5.Size = new System.Drawing.Size(224, 26);
             this.Mnu5.Text = "5";
@@ -408,8 +402,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer1.Size = new System.Drawing.Size(1389, 629);
-            this.splitContainer1.SplitterDistance = 358;
+            this.splitContainer1.Size = new System.Drawing.Size(1011, 563);
+            this.splitContainer1.SplitterDistance = 319;
             this.splitContainer1.SplitterWidth = 10;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -426,10 +420,9 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tbChat2);
-            this.splitContainer2.Size = new System.Drawing.Size(1389, 358);
-            this.splitContainer2.SplitterDistance = 681;
+            this.splitContainer2.Size = new System.Drawing.Size(1011, 319);
+            this.splitContainer2.SplitterDistance = 512;
             this.splitContainer2.TabIndex = 0;
-            this.splitContainer2.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer2_SplitterMoved);
             // 
             // dbGrid
             // 
@@ -437,24 +430,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dbGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dbGrid.Location = new System.Drawing.Point(3, 3);
+            this.dbGrid.Location = new System.Drawing.Point(0, 0);
             this.dbGrid.Name = "dbGrid";
             this.dbGrid.RowHeadersWidth = 51;
             this.dbGrid.RowTemplate.Height = 27;
-            this.dbGrid.Size = new System.Drawing.Size(675, 352);
+            this.dbGrid.Size = new System.Drawing.Size(509, 313);
             this.dbGrid.TabIndex = 0;
-            this.dbGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dbGrid_CellContentClick);
             // 
             // tbChat2
             // 
             this.tbChat2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbChat2.Location = new System.Drawing.Point(3, 3);
+            this.tbChat2.Location = new System.Drawing.Point(3, 0);
             this.tbChat2.Multiline = true;
             this.tbChat2.Name = "tbChat2";
             this.tbChat2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbChat2.Size = new System.Drawing.Size(698, 352);
+            this.tbChat2.Size = new System.Drawing.Size(489, 313);
             this.tbChat2.TabIndex = 3;
             // 
             // splitContainer3
@@ -470,8 +462,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.tbChat);
-            this.splitContainer3.Size = new System.Drawing.Size(1389, 261);
-            this.splitContainer3.SplitterDistance = 684;
+            this.splitContainer3.Size = new System.Drawing.Size(1011, 234);
+            this.splitContainer3.SplitterDistance = 502;
             this.splitContainer3.SplitterWidth = 8;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -485,7 +477,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(681, 249);
+            this.textBox1.Size = new System.Drawing.Size(499, 222);
             this.textBox1.TabIndex = 1;
             // 
             // tbChat
@@ -493,18 +485,17 @@
             this.tbChat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbChat.Location = new System.Drawing.Point(3, 3);
+            this.tbChat.Location = new System.Drawing.Point(3, 0);
             this.tbChat.Multiline = true;
             this.tbChat.Name = "tbChat";
             this.tbChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbChat.Size = new System.Drawing.Size(683, 249);
+            this.tbChat.Size = new System.Drawing.Size(487, 222);
             this.tbChat.TabIndex = 2;
-            this.tbChat.TextChanged += new System.EventHandler(this.tbChat_TextChanged);
             this.tbChat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbChat_KeyDown);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(434, 5);
+            this.dateTimePicker1.Location = new System.Drawing.Point(407, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(248, 25);
             this.dateTimePicker1.TabIndex = 0;
@@ -514,7 +505,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1389, 657);
+            this.ClientSize = new System.Drawing.Size(1011, 591);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
@@ -582,9 +573,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DataGridView dbGrid;
-        private System.Windows.Forms.TextBox tbChat;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.TextBox tbChat2;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.ToolStripMenuItem MnuClientIndex;
         private System.Windows.Forms.ToolStripMenuItem Mnu1;
@@ -592,6 +581,8 @@
         private System.Windows.Forms.ToolStripMenuItem Mnu3;
         private System.Windows.Forms.ToolStripMenuItem Mnu4;
         private System.Windows.Forms.ToolStripMenuItem Mnu5;
+        private System.Windows.Forms.TextBox tbChat2;
+        private System.Windows.Forms.TextBox tbChat;
     }
 }
 

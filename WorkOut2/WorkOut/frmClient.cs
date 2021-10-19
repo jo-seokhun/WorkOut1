@@ -16,9 +16,11 @@ using static myLibrary.frminput;
 
 namespace WorkOut
 {
+
     public partial class form1 : Form
     {
-       
+
+        SqlDB sqldb = new SqlDB(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\조석훈\source\repos\C#\myDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
         public form1()
         {
@@ -56,24 +58,24 @@ namespace WorkOut
                 dbGrid.Rows.Add(sa1);
             }
 
-            if(this.Text=="Workout_Header")
+            int limit = 5;
+            string[] name = new string[512];
+            for (int i = 0; i < limit; i++)
             {
-                MnuClientIndex.Visible = true;
-
-                int limit = 5;
-                string[] name = new string[512];
-                for (int i = 0; i < limit; i++)
-                {
-                    name[i] = sqldb.GetString($"select name from workoutmem where code = {i + 2}");
-                }
-                Mnu1.Text = name[0];
-                Mnu2.Text = name[1];
-                Mnu3.Text = name[2];
-                Mnu4.Text = name[3];
-                Mnu5.Text = name[4];
+                name[i] = sqldb.GetString($"select name from workoutmem where code = {i + 2}");
             }
+            Mnu1.Text = name[0];
+            Mnu2.Text = name[1];
+            Mnu3.Text = name[2];
+            Mnu4.Text = name[3];
+            Mnu5.Text = name[4];
+
             
-            InitServer();
+
+
+
+
+            //InitServer();
         }
 
         
@@ -269,7 +271,7 @@ namespace WorkOut
 
             MnuClientIndex.Visible = false;
 
-            CloseServer();
+            //CloseServer();
         }
 
 
@@ -352,143 +354,308 @@ namespace WorkOut
         /// /////////////////////////////////////////////////////////////////////////////////////
         /// </summary>
 
-        class TcpEx
-        {
-            public TcpClient tp;
-            public string id;
-            public TcpEx(TcpClient t, string s)
-            { tp = t; id = s; }
-        };
-        List<TcpEx> tcp = new List<TcpEx>();      //TcpClient type의 제네릭 List Object 선언
+        /*
+    class TcpEx
+    {
+        public TcpClient tp;
+        public string id;
+        public TcpEx(TcpClient t, string s)
+        { tp = t; id = s; }
+    };
+    List<TcpEx> tcp = new List<TcpEx>();      //TcpClient type의 제네릭 List Object 선언
 
+
+    Socket sock = null;
+    TcpListener listen = null;
+    Thread threadServer = null;
+    Thread threadRead = null;
+
+    string ConnectIP = "127.0.0.1";
+    int ConnectPort = 9000;
+    int serverPort = 9000;
+    int CP1 = 9001;
+    int CP2 = 9002;
+    int CP3 = 9003;
+    int CP4 = 9004;
+    int CP5 = 9005;
+
+
+
+
+    delegate void CB1(string s);
+    void AddText(string str)
+    {
+        if (tbChat.InvokeRequired)
+        {
+            CB1 cb = new CB1(AddText);
+            Invoke(cb, new object[] { str });
+        }
+        else
+        {
+            tbChat2.Text += str;
+
+        }
+    }
+
+
+    void InitServer()
+    {
+        if (listen != null) listen.Stop();          //기존에 수행되고있는 listener를 중지 
+        listen = new TcpListener(CP1);  //cp1:9001
+        listen.Start();
+
+        if (threadServer != null) threadServer.Abort(); //thread가 돌아가고있었다면 thread 중지
+        threadServer = new Thread(ServerProcess);
+        threadServer.Start();
+
+        if (threadRead != null) threadRead.Abort(); //thread가 돌아가고있었다면 thread 중지
+        threadRead = new Thread(ReadProcess);
+        threadRead.Start();
+    }
+
+    void CloseServer()
+    {
+        //timer1.Stop();
+        if (listen != null) listen.Stop();          //기존에 수행되고있는 listener를 중지 
+        if (threadServer != null) threadServer.Abort(); //thread가 돌아가고있었다면 thread 중지
+        if (threadRead != null) threadRead.Abort(); //thread가 돌아가고있었다면 thread 중지
+    }
+
+    SqlDB sqldb = new SqlDB(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\조석훈\source\repos\C#\myDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+
+    void ServerProcess()
+    {
+        byte[] buf = new byte[100];
+        while(true)
+        {
+            if(listen.Pending())
+            {
+                TcpClient tp = listen.AcceptTcpClient();
+
+            }
+            Thread.Sleep(100);
+        }
+    }
+
+    void ReadProcess()
+    {
+        byte[] buf = new byte[1024];
+        while (true)
+        {
+            for(int i = 0; i<tcp.Count;i++)
+            {
+                if (tcp[i].tp.Available>0)
+                {
+                    int n = tcp[i].tp.Client.Receive(buf);
+                    AddText(Encoding.Default.GetString(buf, 0, n));
+                }
+            }
+            Thread.Sleep(100);
+        }
+    }
+
+    private void Mnu1_Click(object sender, EventArgs e)
+    {
+        if (sock != null)
+        {
+            if (MessageBox.Show("재연결 하시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.No) return;
+            if (threadClient != null) threadClient.Abort();
+            sock.Close();
+        }
+        byte[] buf = new byte[100];
+        sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        sock.Connect(ConnectIP, CP1);
+
+        AddText("서버와 접속되었습니다.\r\n");
+        threadClient = new Thread(ClientProcess);
+        threadClient.Start();
+    }
+    Thread threadClient = null;
+
+    private void Mnu2_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void Mnu3_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void Mnu4_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void Mnu5_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    void ClientProcess()
+    {
+        byte[] buf = new byte[1024];
+        while (true)
+        {
+
+            if (sock.Available > 0)
+            {
+                int n = sock.Receive(buf);
+                AddText(Encoding.Default.GetString(buf, 0, n));
+            }
+            Thread.Sleep(100);
+        }
+
+
+    }
+
+    private void tbChat_KeyDown(object sender, KeyEventArgs e)
+    {
+        if(e.KeyCode==Keys.Enter)
+        {
+            for(int i=0;i<tcp.Count;i++)
+            {
+                TcpClient tp = tcp[i].tp;
+                tp.Client.Send(Encoding.Default.GetBytes(tbChat.Text));
+
+            }
+        }
+
+    }
+
+    private void dbGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+
+    }
+
+    private void tbChat_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
+    {
+
+    }
+
+    */
+
+        delegate void CBAddText(string str);
+
+
+        void AddText(string str) //문자열 str을 tbServer TextBox애 출력하는 함수
+        {
+            if (tbChat2.InvokeRequired)     //대리호출이 필요한 상황입니까?
+            {
+                CBAddText cb = new CBAddText(AddText);
+                object[] obj = { str };
+                Invoke(cb, obj);
+            }
+            else
+            {
+                tbChat2.Text += str;
+            }
+
+        }
 
         Socket sock = null;
-        TcpListener listen = null;
-        Thread threadServer = null;
-        Thread threadRead = null;
-
-        public string ConnectIP = "127.0.0.1";
-        public int ConnectPort = 9000;
-        public int serverPort = 9000;
+        string ConnectIP = "127.0.0.1";
         int CP1 = 9001;
         int CP2 = 9002;
         int CP3 = 9003;
         int CP4 = 9004;
         int CP5 = 9005;
 
-
-
-
-        delegate void CB1(string s);
-        void AddText(string str)
-        {
-            if (tbChat.InvokeRequired)
-            {
-                CB1 cb = new CB1(AddText);
-                Invoke(cb, new object[] { str });
-            }
-            else
-            {
-                tbChat2.Text += str;
-
-            }
-        }
-       
-
-        void InitServer()
-        {
-            if (listen != null) listen.Stop();          //기존에 수행되고있는 listener를 중지 
-            listen = new TcpListener(CP1);
-            listen.Start();
-
-            if (threadServer != null) threadServer.Abort(); //thread가 돌아가고있었다면 thread 중지
-            threadServer = new Thread(ServerProcess);
-            threadServer.Start();
-
-            if (threadRead != null) threadRead.Abort(); //thread가 돌아가고있었다면 thread 중지
-            threadRead = new Thread(ReadProcess);
-            threadRead.Start();
-        }
-
-        void CloseServer()
-        {
-            //timer1.Stop();
-            if (listen != null) listen.Stop();          //기존에 수행되고있는 listener를 중지 
-            if (threadServer != null) threadServer.Abort(); //thread가 돌아가고있었다면 thread 중지
-            if (threadRead != null) threadRead.Abort(); //thread가 돌아가고있었다면 thread 중지
-        }
-
-        SqlDB sqldb = new SqlDB(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\조석훈\source\repos\C#\myDatabase.mdf;Integrated Security=True;Connect Timeout=30");
-
-        void ServerProcess()
-        {
-            byte[] buf = new byte[100];
-            while(true)
-            {
-                if(listen.Pending())
-                {
-                    TcpClient tp = listen.AcceptTcpClient();
-
-                }
-                Thread.Sleep(100);
-            }
-        }
-
-        void ReadProcess()
-        {
-            byte[] buf = new byte[100];
-            while (true)
-            {
-                for(int i = 0; i<tcp.Count;i++)
-                {
-                    if (tcp[i].tp.Available>0)
-                    {
-                        int n = tcp[i].tp.Client.Receive(buf);
-                        AddText(Encoding.Default.GetString(buf, 0, n));
-                    }
-                }
-                Thread.Sleep(100);
-            }
-        }
-
         private void Mnu1_Click(object sender, EventArgs e)
         {
-            if (sock != null)
-            {
-                if (MessageBox.Show("재연결 하시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.No) return;
-                if (threadClient != null) threadClient.Abort();
-                sock.Close();
-            }
-            byte[] buf = new byte[100];
             sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             sock.Connect(ConnectIP, CP1);
+            tbChat2.Text += "Connection with Header OK. \r\n";
 
-            AddText("서버와 접속되었습니다.\r\n");
+            Mnu1.Checked = true;
+            Mnu2.Checked = false;
+            Mnu3.Checked = false;
+            Mnu4.Checked = false;
+            Mnu5.Checked = false;
+
             threadClient = new Thread(ClientProcess);
             threadClient.Start();
         }
-        Thread threadClient = null;
+        
+
 
         private void Mnu2_Click(object sender, EventArgs e)
         {
+            sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            sock.Connect(ConnectIP, CP2);
+            tbChat2.Text += "Connection with Header OK. \r\n";
+
+            Mnu2.Checked = true;
+            Mnu1.Checked = false;
+            Mnu3.Checked = false;
+            Mnu4.Checked = false;
+            Mnu5.Checked = false;
+
+            threadClient = new Thread(ClientProcess);
+            threadClient.Start();
 
         }
+
+
 
         private void Mnu3_Click(object sender, EventArgs e)
         {
+            sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            sock.Connect(ConnectIP, CP3);
+            tbChat2.Text += "Connection with Header OK. \r\n";
+
+            Mnu3.Checked = true;
+            Mnu2.Checked = false;
+            Mnu1.Checked = false;
+            Mnu4.Checked = false;
+            Mnu5.Checked = false;
+
+            threadClient = new Thread(ClientProcess);
+            threadClient.Start();
 
         }
 
+
+
         private void Mnu4_Click(object sender, EventArgs e)
         {
+            sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            sock.Connect(ConnectIP, CP4);
+            tbChat2.Text += "Connection with Header OK. \r\n";
+
+            Mnu4.Checked = true;
+            Mnu2.Checked = false;
+            Mnu3.Checked = false;
+            Mnu1.Checked = false;
+            Mnu5.Checked = false;
+
+            threadClient = new Thread(ClientProcess);
+            threadClient.Start();
 
         }
 
         private void Mnu5_Click(object sender, EventArgs e)
         {
+            sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            sock.Connect(ConnectIP, CP5);
+            tbChat2.Text += "Connection with Header OK. \r\n";
+
+            Mnu5.Checked = true;
+            Mnu2.Checked = false;
+            Mnu3.Checked = false;
+            Mnu4.Checked = false;
+            Mnu1.Checked = false;
+
+            threadClient = new Thread(ClientProcess);
+            threadClient.Start();
 
         }
-
+        Thread threadClient = null;
         void ClientProcess()
         {
             byte[] buf = new byte[1024];
@@ -503,37 +670,34 @@ namespace WorkOut
                 Thread.Sleep(100);
             }
 
-
         }
 
         private void tbChat_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode==Keys.Enter)
             {
-                byte[] buf = new byte[100];
-                sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                sock.Connect(ConnectIP, serverPort);
-                string str = tbChat.Text;
-                sock.Send(Encoding.Default.GetBytes(str));
+                if (sock != null)
+                {
+                    string str;
+                    str = tbChat.Text;
+                    str += "\r\n";
+
+                    string str2 = str;
+                    if (Mnu1.Checked == true) str = "[수신 : SONG]" + str;
+                    if (Mnu2.Checked == true) str = "[수신 : KIM]" + str;
+                    if (Mnu3.Checked == true) str = "[수신 : LEE]" + str;
+                    if (Mnu4.Checked == true) str = "[수신 : PARK]" + str;
+                    if (Mnu5.Checked == true) str = "[수신 : NA]" + str;
+
+                    sock.Send(Encoding.Default.GetBytes(str));
+                    tbChat2.Text += "[송신 : 본인] "+str2;
+                    tbChat.Text = "";
+                }
+                
             }
+
             
         }
 
-        private void dbGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void tbChat_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
-        }
-
-        
     }
 }

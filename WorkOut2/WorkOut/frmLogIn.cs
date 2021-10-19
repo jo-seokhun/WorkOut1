@@ -30,7 +30,7 @@ namespace WorkOut
             sqldb.Close();
 
             form1 f1 = new form1();
-            
+            frmHeader fh = new frmHeader();
 
             if (name==ret)
             {
@@ -60,13 +60,13 @@ namespace WorkOut
                     }
                     else if(type=="Header")
                     {
-                        f1.Text = "Workout_Header";
+                        fh.Text = "Workout_Header";
                         MessageBox.Show($"환영합니다 {name}님");
                         this.Hide();        // 숨기기
-                        switch (f1.ShowDialog())
+                        switch (fh.ShowDialog())
                         {
                             case DialogResult.OK:
-                                f1.Close();
+                                fh.Close();
                                 break;
 
                             case DialogResult.Cancel:
