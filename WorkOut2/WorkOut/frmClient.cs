@@ -6,7 +6,9 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using myLibrary;
@@ -53,6 +55,13 @@ namespace WorkOut
                 sa1 = sarr[j].Trim().Split(',');
                 dbGrid.Rows.Add(sa1);
             }
+
+            if(this.Text=="Workout_Header")
+            {
+                MnuClientIndex.Visible = true;
+            }
+
+            InitServer();
         }
 
         
@@ -238,12 +247,17 @@ namespace WorkOut
 
 
 
+
         private void form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             ini.WriteString("Position", "LocationX", $"{Location.X}");
             ini.WriteString("Position", "LocationY", $"{Location.Y}");
 
             File.AppendAllText(address, SetText,Encoding.UTF8);
+
+            MnuClientIndex.Visible = false;
+
+            CloseServer();
         }
 
 
@@ -320,12 +334,113 @@ namespace WorkOut
             //    }
 
             //}
+        }
+
+        /// <summary>
+        /// /////////////////////////////////////////////////////////////////////////////////////
+        /// </summary>
+
+        class TcpEx
+        {
+            public TcpClient tp;
+            public string id;
+            public TcpEx(TcpClient t, string s)
+            { tp = t; id = s; }
+        };
+        List<TcpEx> tcp = new List<TcpEx>();      //TcpClient type의 제네릭 List Object 선언
+
+
+        Socket sock = null;
+        TcpListener listen = null;
+        Thread threadServer = null;
+        Thread threadRead = null;
 
 
 
 
+        delegate void CB1(string s);
+        void AddText(string str)
+        {
+            if (tbChat.InvokeRequired)
+            {
+                CB1 cb = new CB1(AddText);
+                Invoke(cb, new object[] { str });
+            }
+            else
+            {
+                tbChat.Text += str;
+
+            }
+        }
+
+        public string ConnectIP = "127.0.0.1";
+        public int ConnectPort = 9001;
+        public int serverPort = 9001;
+
+        void InitServer()
+        {
+            if (listen != null) listen.Stop();
+            listen = new TcpListener(serverPort);
+            listen.Start();
+
+            if (threadRead != null) threadRead.Abort(); //thread가 돌아가고있었다면 thread 중지
+            threadRead = new Thread(ReadProcess);
+            threadRead.Start();
+        }
+
+        void CloseServer()
+        {
+            //timer1.Stop();
+            if (listen != null) listen.Stop();          //기존에 수행되고있는 listener를 중지 
+            if (threadServer != null) threadServer.Abort(); //thread가 돌아가고있었다면 thread 중지
+            if (threadRead != null) threadRead.Abort(); //thread가 돌아가고있었다면 thread 중지
+        }
+
+        void ReadProcess()
+        {
+            TcpClient tp = listen.AcceptTcpClient();
+
+            byte[] buf = new byte[100];
+            while (true)
+            {
+                for(int i = 0; i<tcp.Count;i++)
+                {
+                    if (tcp[i].tp.Available>0)
+                    {
+                        int n = tcp[i].tp.Client.Receive(buf);
+                        AddText(Encoding.Default.GetString(buf, 0, n));
+                    }
+                }
+                Thread.Sleep(100);
+            }
+        }
+
+        private void tbChat_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Enter)
+            {
+                byte[] buf = new byte[100];
+                sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                sock.Connect(ConnectIP, serverPort);
+                string str = tbChat.Text;
+                sock.Send(Encoding.Default.GetBytes(str));
+            }
+            
+        }
+
+        private void dbGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
 
+        private void tbChat_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
     }
 }

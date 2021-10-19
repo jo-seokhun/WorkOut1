@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="myLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\myLibrary\myLibrary\bin\Debug\myLibrary.dll</HintPath>
+      <HintPath>..\..\..\myLibrary\myLibrary\bin\Debug\myLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,12 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmHeader.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmHeader.Designer.cs">
-      <DependentUpon>frmHeader.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,9 +76,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmHeader.resx">
-      <DependentUpon>frmHeader.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmClient.resx">
       <DependentUpon>frmClient.cs</DependentUpon>
     </EmbeddedResource>

@@ -17,33 +17,36 @@ namespace WorkOut
         {
             InitializeComponent();
         }
-        SqlDB sqldb = new SqlDB(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\조석훈\source\repos\C#\myDatabase.mdf;Integrated Security=True;Connect Timeout=30");
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             string name = tbBoxName.Text;
             string pw = tbBoxPW.Text;
 
+            SqlDB sqldb = new SqlDB(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\조석훈\source\repos\C#\myDatabase.mdf;Integrated Security=True;Connect Timeout=30");
             string ret = sqldb.GetString($"select name from WorkOutMem where name = '{name}'");
             string ret2 = sqldb.GetString($"select PW from WorkOutMem where PW = '{pw}'and Name = '{name}' ");
-            string type = sqldb.GetString($"select Type from WorkOutMem where PW = '{pw}'and Name = '{name}' "); 
+            string type = sqldb.GetString($"select Type from WorkOutMem where PW = '{pw}'and Name = '{name}' ");
+            sqldb.Close();
 
             form1 f1 = new form1();
-            frmHeader fh = new frmHeader();
+            
 
             if (name==ret)
             {
                 if (pw == ret2)
                 {
-                    if(type=="Header")
+                    if(type=="Client")
                     {
                         ///
                         /// 로그인 할 때 로그인 후 로그인 창 사라지게하기
                         ///
+                        f1.Text = "Workout_Client";
                         MessageBox.Show($"환영합니다 {name}님");
                         this.Hide();        // 숨기기
                         switch (f1.ShowDialog())
                         {
+                            
                             case DialogResult.OK:
                                 f1.Close();
                                 break;
@@ -55,14 +58,15 @@ namespace WorkOut
                         }
 
                     }
-                    else if(type=="Client")
+                    else if(type=="Header")
                     {
+                        f1.Text = "Workout_Header";
                         MessageBox.Show($"환영합니다 {name}님");
                         this.Hide();        // 숨기기
-                        switch (fh.ShowDialog())
+                        switch (f1.ShowDialog())
                         {
                             case DialogResult.OK:
-                                fh.Close();
+                                f1.Close();
                                 break;
 
                             case DialogResult.Cancel:
