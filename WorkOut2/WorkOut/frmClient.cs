@@ -59,8 +59,20 @@ namespace WorkOut
             if(this.Text=="Workout_Header")
             {
                 MnuClientIndex.Visible = true;
-            }
 
+                int limit = 5;
+                string[] name = new string[512];
+                for (int i = 0; i < limit; i++)
+                {
+                    name[i] = sqldb.GetString($"select name from workoutmem where code = {i + 2}");
+                }
+                Mnu1.Text = name[0];
+                Mnu2.Text = name[1];
+                Mnu3.Text = name[2];
+                Mnu4.Text = name[3];
+                Mnu5.Text = name[4];
+            }
+            
             InitServer();
         }
 
@@ -355,6 +367,15 @@ namespace WorkOut
         Thread threadServer = null;
         Thread threadRead = null;
 
+        public string ConnectIP = "127.0.0.1";
+        public int ConnectPort = 9000;
+        public int serverPort = 9000;
+        int CP1 = 9001;
+        int CP2 = 9002;
+        int CP3 = 9003;
+        int CP4 = 9004;
+        int CP5 = 9005;
+
 
 
 
@@ -368,20 +389,21 @@ namespace WorkOut
             }
             else
             {
-                tbChat.Text += str;
+                tbChat2.Text += str;
 
             }
         }
-
-        public string ConnectIP = "127.0.0.1";
-        public int ConnectPort = 9001;
-        public int serverPort = 9001;
+       
 
         void InitServer()
         {
-            if (listen != null) listen.Stop();
-            listen = new TcpListener(serverPort);
+            if (listen != null) listen.Stop();          //기존에 수행되고있는 listener를 중지 
+            listen = new TcpListener(CP1);
             listen.Start();
+
+            if (threadServer != null) threadServer.Abort(); //thread가 돌아가고있었다면 thread 중지
+            threadServer = new Thread(ServerProcess);
+            threadServer.Start();
 
             if (threadRead != null) threadRead.Abort(); //thread가 돌아가고있었다면 thread 중지
             threadRead = new Thread(ReadProcess);
@@ -396,10 +418,24 @@ namespace WorkOut
             if (threadRead != null) threadRead.Abort(); //thread가 돌아가고있었다면 thread 중지
         }
 
+        SqlDB sqldb = new SqlDB(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\조석훈\source\repos\C#\myDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+
+        void ServerProcess()
+        {
+            byte[] buf = new byte[100];
+            while(true)
+            {
+                if(listen.Pending())
+                {
+                    TcpClient tp = listen.AcceptTcpClient();
+
+                }
+                Thread.Sleep(100);
+            }
+        }
+
         void ReadProcess()
         {
-            TcpClient tp = listen.AcceptTcpClient();
-
             byte[] buf = new byte[100];
             while (true)
             {
@@ -413,6 +449,61 @@ namespace WorkOut
                 }
                 Thread.Sleep(100);
             }
+        }
+
+        private void Mnu1_Click(object sender, EventArgs e)
+        {
+            if (sock != null)
+            {
+                if (MessageBox.Show("재연결 하시겠습니까?", "", MessageBoxButtons.YesNo) == DialogResult.No) return;
+                if (threadClient != null) threadClient.Abort();
+                sock.Close();
+            }
+            byte[] buf = new byte[100];
+            sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            sock.Connect(ConnectIP, CP1);
+
+            AddText("서버와 접속되었습니다.\r\n");
+            threadClient = new Thread(ClientProcess);
+            threadClient.Start();
+        }
+        Thread threadClient = null;
+
+        private void Mnu2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Mnu3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Mnu4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Mnu5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        void ClientProcess()
+        {
+            byte[] buf = new byte[1024];
+            while (true)
+            {
+
+                if (sock.Available > 0)
+                {
+                    int n = sock.Receive(buf);
+                    AddText(Encoding.Default.GetString(buf, 0, n));
+                }
+                Thread.Sleep(100);
+            }
+
+
         }
 
         private void tbChat_KeyDown(object sender, KeyEventArgs e)
@@ -442,5 +533,7 @@ namespace WorkOut
         {
 
         }
+
+        
     }
 }
