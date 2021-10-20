@@ -39,6 +39,11 @@ namespace WorkOut
 
         }
 
+        private void TbBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) btnoutput_Click(sender, e);
+        }
+
 
 
 

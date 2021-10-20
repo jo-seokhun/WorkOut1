@@ -41,7 +41,7 @@ namespace WorkOut
                         ///
                         /// 로그인 할 때 로그인 후 로그인 창 사라지게하기
                         ///
-                        f1.Text = "Workout_Client";
+                        f1.Text = $"Workout_Client({name})";
                         MessageBox.Show($"환영합니다 {name}님");
                         this.Hide();        // 숨기기
                         switch (f1.ShowDialog())
@@ -91,6 +91,19 @@ namespace WorkOut
             }
 
 
+        }
+
+        private void btnOK_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void tbBoxPW_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnOK_Click(sender, e);
+            }
         }
     }
 }

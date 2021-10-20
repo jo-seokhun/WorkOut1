@@ -73,6 +73,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tbChat = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.saveSendToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuSend = new System.Windows.Forms.ToolStripMenuItem();
+            this.MnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -95,7 +99,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.shoToolStripMenuItem,
             this.chestBackToolStripMenuItem,
-            this.MnuClientIndex});
+            this.MnuClientIndex,
+            this.saveSendToolStripMenuItem,
+            this.MnuHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1011, 28);
@@ -120,34 +126,34 @@
             this.MnuRearDelt,
             this.MnuOhp});
             this.shoulderToolStripMenuItem.Name = "shoulderToolStripMenuItem";
-            this.shoulderToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
+            this.shoulderToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.shoulderToolStripMenuItem.Text = "Shoulder";
             // 
             // MnuSohp
             // 
             this.MnuSohp.Name = "MnuSohp";
-            this.MnuSohp.Size = new System.Drawing.Size(155, 26);
+            this.MnuSohp.Size = new System.Drawing.Size(224, 26);
             this.MnuSohp.Text = "S_Ohp";
             this.MnuSohp.Click += new System.EventHandler(this.MnuSohp_Click);
             // 
             // MnuSarere
             // 
             this.MnuSarere.Name = "MnuSarere";
-            this.MnuSarere.Size = new System.Drawing.Size(155, 26);
+            this.MnuSarere.Size = new System.Drawing.Size(224, 26);
             this.MnuSarere.Text = "Sarere";
             this.MnuSarere.Click += new System.EventHandler(this.MnuSarere_Click);
             // 
             // MnuRearDelt
             // 
             this.MnuRearDelt.Name = "MnuRearDelt";
-            this.MnuRearDelt.Size = new System.Drawing.Size(155, 26);
+            this.MnuRearDelt.Size = new System.Drawing.Size(224, 26);
             this.MnuRearDelt.Text = "Rear Delt";
             this.MnuRearDelt.Click += new System.EventHandler(this.MnuRearDelt_Click);
             // 
             // MnuOhp
             // 
             this.MnuOhp.Name = "MnuOhp";
-            this.MnuOhp.Size = new System.Drawing.Size(155, 26);
+            this.MnuOhp.Size = new System.Drawing.Size(224, 26);
             this.MnuOhp.Text = "Ohp";
             this.MnuOhp.Click += new System.EventHandler(this.MnuOhp_Click);
             // 
@@ -158,7 +164,7 @@
             this.MnuLegExtention,
             this.MnuLegCurl});
             this.legsToolStripMenuItem.Name = "legsToolStripMenuItem";
-            this.legsToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
+            this.legsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.legsToolStripMenuItem.Text = "Legs";
             // 
             // MnuSquat
@@ -188,7 +194,7 @@
             this.MnuDumbelCurl,
             this.MnuBarbelCurl});
             this.bicepsToolStripMenuItem.Name = "bicepsToolStripMenuItem";
-            this.bicepsToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
+            this.bicepsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.bicepsToolStripMenuItem.Text = "Biceps";
             this.bicepsToolStripMenuItem.Click += new System.EventHandler(this.bicepsToolStripMenuItem_Click);
             // 
@@ -225,41 +231,41 @@
             this.MnuDips,
             this.MnuFly});
             this.chestToolStripMenuItem.Name = "chestToolStripMenuItem";
-            this.chestToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.chestToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.chestToolStripMenuItem.Text = "Chest";
             // 
             // MnuBenchpress
             // 
             this.MnuBenchpress.Name = "MnuBenchpress";
-            this.MnuBenchpress.Size = new System.Drawing.Size(223, 26);
+            this.MnuBenchpress.Size = new System.Drawing.Size(224, 26);
             this.MnuBenchpress.Text = "Bench Press";
             this.MnuBenchpress.Click += new System.EventHandler(this.MnuBenchpress_Click);
             // 
             // MnuDumbelpress
             // 
             this.MnuDumbelpress.Name = "MnuDumbelpress";
-            this.MnuDumbelpress.Size = new System.Drawing.Size(223, 26);
+            this.MnuDumbelpress.Size = new System.Drawing.Size(224, 26);
             this.MnuDumbelpress.Text = "Dumbel Press";
             this.MnuDumbelpress.Click += new System.EventHandler(this.MnuDumbelpress_Click);
             // 
             // MnuInclinebenchpress
             // 
             this.MnuInclinebenchpress.Name = "MnuInclinebenchpress";
-            this.MnuInclinebenchpress.Size = new System.Drawing.Size(223, 26);
+            this.MnuInclinebenchpress.Size = new System.Drawing.Size(224, 26);
             this.MnuInclinebenchpress.Text = "Incline Bench Press";
             this.MnuInclinebenchpress.Click += new System.EventHandler(this.MnuInclinebenchpress_Click);
             // 
             // MnuDips
             // 
             this.MnuDips.Name = "MnuDips";
-            this.MnuDips.Size = new System.Drawing.Size(223, 26);
+            this.MnuDips.Size = new System.Drawing.Size(224, 26);
             this.MnuDips.Text = "Dips";
             this.MnuDips.Click += new System.EventHandler(this.MnuDips_Click);
             // 
             // MnuFly
             // 
             this.MnuFly.Name = "MnuFly";
-            this.MnuFly.Size = new System.Drawing.Size(223, 26);
+            this.MnuFly.Size = new System.Drawing.Size(224, 26);
             this.MnuFly.Text = "Fly";
             this.MnuFly.Click += new System.EventHandler(this.MnuFly_Click);
             // 
@@ -274,7 +280,7 @@
             this.MnuBarbelrow,
             this.MnuArmpulldown});
             this.backToolStripMenuItem.Name = "backToolStripMenuItem";
-            this.backToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.backToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.backToolStripMenuItem.Text = "Back";
             // 
             // MnuPullUp
@@ -331,7 +337,7 @@
             this.tricepsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MnuCablepushdown});
             this.tricepsToolStripMenuItem.Name = "tricepsToolStripMenuItem";
-            this.tricepsToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.tricepsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.tricepsToolStripMenuItem.Text = "Triceps";
             // 
             // MnuCablepushdown
@@ -350,8 +356,8 @@
             this.Mnu4,
             this.Mnu5});
             this.MnuClientIndex.Name = "MnuClientIndex";
-            this.MnuClientIndex.Size = new System.Drawing.Size(105, 24);
-            this.MnuClientIndex.Text = "Client Index";
+            this.MnuClientIndex.Size = new System.Drawing.Size(82, 24);
+            this.MnuClientIndex.Text = "Chatting";
             // 
             // Mnu1
             // 
@@ -489,17 +495,47 @@
             this.tbChat.Multiline = true;
             this.tbChat.Name = "tbChat";
             this.tbChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbChat.Size = new System.Drawing.Size(487, 222);
+            this.tbChat.Size = new System.Drawing.Size(483, 222);
             this.tbChat.TabIndex = 2;
             this.tbChat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbChat_KeyDown);
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(407, 0);
+            this.dateTimePicker1.Location = new System.Drawing.Point(485, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(248, 25);
             this.dateTimePicker1.TabIndex = 0;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // saveSendToolStripMenuItem
+            // 
+            this.saveSendToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MnuSave,
+            this.MnuSend});
+            this.saveSendToolStripMenuItem.Name = "saveSendToolStripMenuItem";
+            this.saveSendToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.saveSendToolStripMenuItem.Text = "Save/Send";
+            // 
+            // MnuSave
+            // 
+            this.MnuSave.Name = "MnuSave";
+            this.MnuSave.Size = new System.Drawing.Size(224, 26);
+            this.MnuSave.Text = "Save";
+            this.MnuSave.Click += new System.EventHandler(this.MnuSave_Click);
+            // 
+            // MnuSend
+            // 
+            this.MnuSend.Name = "MnuSend";
+            this.MnuSend.Size = new System.Drawing.Size(224, 26);
+            this.MnuSend.Text = "Send";
+            this.MnuSend.Click += new System.EventHandler(this.MnuSend_Click);
+            // 
+            // MnuHelp
+            // 
+            this.MnuHelp.Name = "MnuHelp";
+            this.MnuHelp.Size = new System.Drawing.Size(55, 24);
+            this.MnuHelp.Text = "Help";
+            this.MnuHelp.Click += new System.EventHandler(this.MnuHelp_Click);
             // 
             // form1
             // 
@@ -583,6 +619,10 @@
         private System.Windows.Forms.ToolStripMenuItem Mnu5;
         private System.Windows.Forms.TextBox tbChat2;
         private System.Windows.Forms.TextBox tbChat;
+        private System.Windows.Forms.ToolStripMenuItem saveSendToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MnuSave;
+        private System.Windows.Forms.ToolStripMenuItem MnuSend;
+        private System.Windows.Forms.ToolStripMenuItem MnuHelp;
     }
 }
 

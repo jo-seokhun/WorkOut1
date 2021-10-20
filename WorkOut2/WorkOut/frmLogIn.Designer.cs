@@ -67,6 +67,7 @@
             this.tbBoxPW.Name = "tbBoxPW";
             this.tbBoxPW.Size = new System.Drawing.Size(100, 25);
             this.tbBoxPW.TabIndex = 3;
+            this.tbBoxPW.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbBoxPW_KeyDown);
             // 
             // btnCancel
             // 
@@ -88,8 +89,9 @@
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnOK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnOK_KeyDown);
             // 
-            // Form4
+            // frmLogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -100,8 +102,8 @@
             this.Controls.Add(this.tbBoxName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form4";
-            this.Text = "Form4";
+            this.Name = "frmLogIn";
+            this.Text = "LogIn";
             this.ResumeLayout(false);
             this.PerformLayout();
 

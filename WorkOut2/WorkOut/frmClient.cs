@@ -70,10 +70,6 @@ namespace WorkOut
             Mnu4.Text = name[3];
             Mnu5.Text = name[4];
 
-            
-
-
-
 
             //InitServer();
         }
@@ -101,6 +97,7 @@ namespace WorkOut
             string str = "";
             try
             {
+                string name = this.Text.Split('(', ')')[1];
                 int sets = 0;
                 int set = 0;
                 int[] weight = new int[512];
@@ -130,7 +127,7 @@ namespace WorkOut
                     {
                         if(textBox1.Text=="")
                         {
-                            textBox1.Text += $"DATE,DAY,TYPE,SETS,WEIGHT,REPS,Total Reps,Volume\r\n";
+                            textBox1.Text += $"DATE,DAY,TYPE,SETS,WEIGHT,REPS,Total Reps,Volume,Name\r\n";
                         }
                     }
                     
@@ -140,7 +137,7 @@ namespace WorkOut
                         trep[i] += rep[j];
                         Volume[i] += volume[j];
                     }
-                    textBox1.Text += $"{f2.tbBoxDate.Text},{f2.tbBoxDoW.Text},{ExerType},{i + 1},{weight[i]}kg,{rep[i]},{trep[i]},{Volume[i]}kg \r\n";
+                    textBox1.Text += $"{f2.tbBoxDate.Text},{f2.tbBoxDoW.Text},{ExerType},{i + 1},{weight[i]}kg,{rep[i]},{trep[i]},{Volume[i]}kg,{name} \r\n";
 
 
                 }
@@ -267,11 +264,13 @@ namespace WorkOut
             ini.WriteString("Position", "LocationX", $"{Location.X}");
             ini.WriteString("Position", "LocationY", $"{Location.Y}");
 
-            File.AppendAllText(address, SetText,Encoding.UTF8);
+            
 
             MnuClientIndex.Visible = false;
+            MnuSave.Enabled = true;
+            MnuSave.Enabled = true;
 
-            //CloseServer();
+            CloseServer();
         }
 
 
@@ -540,6 +539,11 @@ namespace WorkOut
 
     */
 
+        void CloseServer()
+        {
+            if (threadClient != null) threadClient.Abort(); //thread가 돌아가고있었다면 thread 중지
+        }
+
         delegate void CBAddText(string str);
 
 
@@ -565,6 +569,7 @@ namespace WorkOut
         int CP3 = 9003;
         int CP4 = 9004;
         int CP5 = 9005;
+        int CPtoH = 9006;
 
         private void Mnu1_Click(object sender, EventArgs e)
         {
@@ -655,7 +660,24 @@ namespace WorkOut
             threadClient.Start();
 
         }
+
+        private void MnuSend_Click(object sender, EventArgs e)
+        {
+            sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            sock.Connect(ConnectIP, CPtoH);
+
+            if (sock != null)
+            {
+                string str;
+                str = textBox1.Text;
+                
+                sock.Send(Encoding.Default.GetBytes(str));
+            }
+
+
+        }
         Thread threadClient = null;
+
         void ClientProcess()
         {
             byte[] buf = new byte[1024];
@@ -669,7 +691,6 @@ namespace WorkOut
                 }
                 Thread.Sleep(100);
             }
-
         }
 
         private void tbChat_KeyDown(object sender, KeyEventArgs e)
@@ -692,12 +713,29 @@ namespace WorkOut
                     sock.Send(Encoding.Default.GetBytes(str));
                     tbChat2.Text += "[송신 : 본인] "+str2;
                     tbChat.Text = "";
-                }
-                
+                }   
             }
 
+        }
+
+        private void MnuSave_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "") MessageBox.Show("운동일지 작성 후 저장해주십시오.");
+            else
+            {
+                File.AppendAllText(address, SetText, Encoding.UTF8);
+                MessageBox.Show("운동기록을 보관하였습니다.");
+                MnuSave.Enabled = false;
+            }
+            
             
         }
 
+        private void MnuHelp_Click(object sender, EventArgs e)
+        {
+            string str = "Training FeedBack App에 오신걸 환영합니다!\r\n현재 모드는 Client Mode입니다.\r\n\r\n<운동일지 기록>\r\n1. 상단 메뉴 Shoulder/Legs/Chest/Back 클릭 \r\n2. 세부메뉴 운동종목 선택\r\n3. Set 팝업창에 세트 수 입력\r\n4. Info팝업창에 무게, 반복횟수 입력\r\n5. 상단 메뉴 Save/Send -> Save 클릭\r\n\r\n<특정날짜 운동기록 확인>\r\n1. 상단에 날짜 우측에 캘린더 아이콘 클릭\r\n2. 캘린더 날짜 선택\r\n\r\n<강사님과 채팅>\r\n1. 상단메뉴 Chatting 클릭\r\n2. 하단 우측 텍스트박스에 정보 입력\r\n3. 엔터키 누르기\r\n4. 상단 우측 텍스트박스에 채팅창 확인\r\n\r\n<운동일지 강사님께 전송>\r\n1. 상단 메뉴 Shoulder/Legs/Chest/Back 클릭\r\n 2. 세부메뉴 운동종목 선택\r\n3. Set 팝업창에 세트 수 입력\r\n4. Info팝업창에 무게, 반복횟수 입력\r\n5. 상단 메뉴 Save/Send -> Send 클릭";
+ 
+            MessageBox.Show(str, "도움말", MessageBoxButtons.OK);
+        }
     }
 }

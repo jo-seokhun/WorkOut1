@@ -49,6 +49,7 @@
             this.textBox1.Size = new System.Drawing.Size(284, 25);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // button1
             // 
@@ -60,8 +61,9 @@
             this.button1.Text = "ok";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button1_KeyDown);
             // 
-            // Form3
+            // frmSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -69,8 +71,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.Prompt);
-            this.Name = "Form3";
-            this.Text = "Form3";
+            this.Name = "frmSet";
+            this.Text = "Input Set";
             this.ResumeLayout(false);
             this.PerformLayout();
 

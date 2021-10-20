@@ -81,6 +81,7 @@
             this.TbBox2.Name = "TbBox2";
             this.TbBox2.Size = new System.Drawing.Size(93, 25);
             this.TbBox2.TabIndex = 8;
+            this.TbBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbBox2_KeyDown);
             // 
             // label1
             // 
@@ -121,7 +122,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "frmInfo";
-            this.Text = "Form2";
+            this.Text = "Input Information";
             this.Load += new System.EventHandler(this.frmInfo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
